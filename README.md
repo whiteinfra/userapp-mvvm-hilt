@@ -1,22 +1,26 @@
-# UserApp - Lab 4
+# UserApp: MVVM + Clean Architecture
 
-### Опис
-Проєкт демонструє архітектуру MVVM, Clean Architecture та використання Hilt для впровадження залежностей.
+![Kotlin](https://img.shields.io/badge/Kotlin-7F52FF?style=flat-square&logo=kotlin&logoColor=white)
+![Jetpack Compose](https://img.shields.io/badge/Jetpack%20Compose-4285F4?style=flat-square&logo=jetpackcompose&logoColor=white)
+![Hilt](https://img.shields.io/badge/Hilt-DI-34A853?style=flat-square&logo=google&logoColor=white)
 
-### Технології
-- Kotlin, Jetpack Compose
-- Hilt (Dependency Injection)
-- Clean Architecture (Data, Domain, Presentation)
-- StateFlow, ViewModel
+A user list and details app that shows **MVVM** on top of **Clean Architecture** layers, wired with **Hilt**. The data layer simulates a network source with an in-memory list and delays.
 
-### Контрольні питання
-1. **У чому полягає різниця між MVVM і MVC?**
-   - У MVVM View підписується на зміни у ViewModel (через Observable/StateFlow), тоді як у MVC Controller безпосередньо маніпулює View. ViewModel не знає про View, що полегшує тестування.
-2. **Які переваги Clean Architecture?**
-   - Незалежність від фреймворків, баз даних та UI. Легкість тестування бізнес-логіки та масштабованість.
-3. **Для чого потрібен Hilt?**
-   - Hilt автоматизує процес впровадження залежностей в Android-компоненти, зменшуючи кількість шаблонного коду (boilerplate) та спрощуючи керування життєвим циклом залежностей.
-4. **Чому StateFlow кращий за LiveData у Compose?**
-   - StateFlow є частиною Kotlin Coroutines, він більш нативно працює з Compose, завжди має початкове значення та пропонує багатий набір операторів для трансформації даних.
-5. **Як реалізується зв’язок між ViewModel і UI?**
-   - Через спостереження за станом (StateFlow/State) у UI. Коли стан у ViewModel змінюється, UI автоматично перемальовується (recomposition).
+> Lab #4 · Mobile Application Development course. Ukrainian version: [README.uk.md](README.uk.md)
+
+## Structure
+
+| Layer | Contents |
+|---|---|
+| domain | `User`, `UserRepository` interface, `GetUsersUseCase`, `GetUserByIdUseCase` |
+| data | `UserDto`, `UserRepositoryImpl` |
+| presentation | `UserListScreen`, `UserDetailScreen`, `NavGraph`, `UserViewModel` (`StateFlow`) |
+| di | `AppModule` (Hilt) |
+
+## Tech stack
+
+Kotlin · Jetpack Compose · Navigation Compose · Hilt · Coroutines · StateFlow · ViewModel
+
+## Run locally
+
+Open in Android Studio, let Gradle sync, run on API 26+.
